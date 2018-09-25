@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>Syntactic-Sugar.design</title>
+ <link href="http://localhost:4000/atom.xml" rel="self"/>
+ <id>http://localhost:4000</id>
+ <updated>2018-09-25T15:40:08+12:00</updated>
+ <author>
+   <name>Jack Gammon</name>
+   <uri>https://www.linkedin.com/in/jackgammon/</uri>
+   <email>spiffyRAM@gmail.com</email>
+ </author>
+
+ 
+
+ <entry>
+   <title>Building a better Building 20</title>
+   <link href="http://localhost:4000/Eudaimonia-Machine"/>
+   <id>http://localhost:4000/Eudaimonia-Machine</id>
+   <updated>2018-09-25T00:00:00+12:00</updated>
+   <content type="html">&lt;div class=&quot;figure&quot;&gt; &lt;p&gt;&lt;img src=&quot;img/building20-3.jpg&quot; alt=&quot;building20-3.jpg&quot; /&gt; &lt;/p&gt; &lt;/div&gt; &lt;p&gt; I LIKE the idea of being able to take something as chaotic and ill-defined as creative genius, and build a machine to produce it. There's something satisfying about the mechanisms of a machine. Each part achieves its purpose because it has...</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>Blogging from within org mode</title>
+   <link href="http://localhost:4000/Test"/>
+   <id>http://localhost:4000/Test</id>
+   <updated>2018-09-17T00:00:00+12:00</updated>
+   <content type="html">&lt;p&gt; Just something I'm trying out. Writing a blog post from within Org-Mode. Hoping doing this will alieviate some of the 'posting anxiety' and get some stuff out there. Bebo. &lt;/p&gt; &lt;table border=&quot;2&quot; cellspacing=&quot;0&quot; cellpadding=&quot;6&quot; rules=&quot;groups&quot; frame=&quot;hsides&quot;&gt; &lt;colgroup&gt; &lt;col class=&quot;left&quot; /&gt; &lt;/colgroup&gt; &lt;thead&gt; &lt;tr&gt; &lt;th scope=&quot;col&quot; class=&quot;left&quot;&gt;Links for reference&lt;/th&gt; &lt;/tr&gt;...</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>Writing up Muse presentation</title>
+   <link href="http://localhost:4000/Muse"/>
+   <id>http://localhost:4000/Muse</id>
+   <updated>2018-09-17T00:00:00+12:00</updated>
+   <content type="html">&lt;p&gt; Currently writing up my presentation for the Muse / Machine Learning project. Basically I am taking data from a Muse headband, which is a consumer-grade eeg device, and putting the results through a few machine learning algorithms. It's pretty fun, if a little strenuous. Trying to find out whether...</content>
+ </entry>
+
+ 
+
+</feed>
