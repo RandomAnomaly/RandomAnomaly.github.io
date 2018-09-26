@@ -669,7 +669,7 @@ footer {
 #header h1 {
   color: #C06D4F; }
 
-.drop-caps-section-type1 p:first-child:first-letter {
+.drop-caps-section-type1 > p:first-child:first-letter {
   color: #b36141;
   float: left;
   font-family: Georgia;
@@ -679,7 +679,7 @@ footer {
   padding-right: 8px;
   padding-left: 3px; }
 
-.drop-caps-section-type2 p:first-child:first-letter {
+.drop-caps-section-type2 > p:first-child:first-letter {
   color: #d39c87;
   float: left;
   font-family: Georgia;
@@ -698,3 +698,32 @@ footer {
   margin-top: 35px;
   margin-bottom: 35px;
   background-color: #d5d5d5; }
+
+.pullquote-right {
+  margin-top: 0.5em;
+  width: 8em;
+  padding: 0.2em 0 0.2em 0;
+  border-top: 0.3em double #b36141;
+  border-bottom: 0.3em double #b36141;
+  font-size: 1.2em;
+  line-height: 1em;
+  text-align: center;
+  float: right;
+  color: #b36141; }
+  .pullquote-right p {
+    margin-bottom: 0.1em; }
+
+.pullquote-left {
+  margin-top: 0.5em;
+  margin-right: 0.5em;
+  width: 8em;
+  padding: 0.2em 0 0.2em 0;
+  border-top: 0.3em double #b36141;
+  border-bottom: 0.3em double #b36141;
+  font-size: 1.2em;
+  line-height: 1em;
+  text-align: center;
+  float: left;
+  color: #b36141; }
+  .pullquote-left p {
+    margin-bottom: 0.1em; }
