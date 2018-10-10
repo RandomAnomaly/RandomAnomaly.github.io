@@ -664,7 +664,7 @@ footer {
 /*- Custom style -*/
 #header img {
   max-height: 200px;
-  padding-left: 75px; }
+  padding-left: 35px; }
 
 #header h1 {
   color: #C06D4F; }
@@ -728,6 +728,12 @@ footer {
   .pullquote-left p {
     margin-bottom: 0.1em; }
 
+@media screen and (max-width: 600px) {
+  .pullquote-left {
+    display: none; }
+
+  .pullquote-right {
+    display: none; } }
 .pullimage-left {
   margin-top: 1em;
   margin-right: 0.5em;
@@ -749,3 +755,11 @@ footer {
       padding-bottom: 0.1em; }
   .pullimage-left p {
     margin-bottom: 0.1em; }
+
+@media screen and (max-width: 600px) {
+  .pullimage-left {
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%; } }
