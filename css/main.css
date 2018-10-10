@@ -727,3 +727,25 @@ footer {
   color: #b36141; }
   .pullquote-left p {
     margin-bottom: 0.1em; }
+
+.pullimage-left {
+  margin-top: 0.5em;
+  margin-right: 0.5em;
+  width: 14em;
+  padding: 0.2em 0 0.2em 0;
+  border-top: 0.3em double #b36141;
+  border-bottom: 0.3em double #b36141;
+  font-size: 1em;
+  line-height: 0em;
+  text-align: center;
+  float: left;
+  color: #b36141; }
+  .pullimage-left .figure p img {
+    margin-bottom: 1em; }
+  .pullimage-left .image-caption {
+    border-top: 0.1em solid #b36141; }
+    .pullimage-left .image-caption p {
+      padding-top: 0.1em;
+      padding-bottom: 0.1em; }
+  .pullimage-left p {
+    margin-bottom: 0.1em; }
