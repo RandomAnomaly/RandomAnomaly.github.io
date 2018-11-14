@@ -734,6 +734,29 @@ footer {
 
   .pullquote-right {
     display: none; } }
+.image-center {
+  margin-top: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1em;
+  width: 30em;
+  padding: 0.2em 0 0.2em 0;
+  border-top: 0.3em double #b36141;
+  border-bottom: 0.3em double #b36141;
+  font-size: 1em;
+  line-height: 0em;
+  text-align: center;
+  color: #b36141; }
+  .image-center .figure p img {
+    margin-bottom: 1em; }
+  .image-center .image-caption {
+    border-top: 0.1em solid #b36141; }
+    .image-center .image-caption p {
+      padding-top: 0.1em;
+      padding-bottom: 0.1em; }
+  .image-center p {
+    margin-bottom: 0.1em; }
+
 .pullimage-left {
   margin-top: 1em;
   margin-right: 0.5em;

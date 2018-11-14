@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Meta -->
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="generator" content="Jekyll">
+
+    <title>Making your emacs config a little more literate</title>
+
+    <!-- CSS & fonts -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600' rel='stylesheet' type='text/css'>
+    
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+    
+    <!-- RSS -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+    
+
+    <!-- Matomo -->
+    <script type="text/javascript">
+	var _paq = _paq || [];
+	/* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+	_paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+	_paq.push(["setDomains", ["*.syntactic-sugar.design","*.threeone33seven.github.io"]]);
+	_paq.push(["setDoNotTrack", true]);
+	_paq.push(['trackPageView']);
+	_paq.push(['enableLinkTracking']);
+	(function() {
+	var u="//40.127.74.205/";
+	_paq.push(['setTrackerUrl', u+'piwik.php']);
+	_paq.push(['setSiteId', '2']);
+	var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+	g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+	})();
+    </script>
+    <noscript><p><img src="//40.127.74.205/piwik.php?idsite=2&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+    <!-- End Matomo Code -->
+ 
+</head>
+
+
+<body>
+	<div id="wrap">
+	  	
+	  	<!-- Navigation -->
+	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/">Home</a>
+
+		<!-- Nav pages -->
+	  
+	    
+	  
+	    
+	      <a href="/about" title="About Jack">About Jack</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+    
+    <!-- Nav links -->
+	  <a href="https://www.linkedin.com/in/jackgammon/">LinkedIn</a>
+<a href="https://github.com/RandomAnomaly">Github</a>
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<!-- Your custom nav footer here -->
+	Our life is what our thoughts make it.
+</footer>
+	
+
+</nav>
+
+    
+    <!-- Icon menu -->
+	  <a id="nav-menu">
+	  	<div id="menu"></div>
+	  </a>
+
+      <!-- Header -->
+      
+        <header id="header">
+	<a href="/">
+		<img src="/img/Shrimp.svg" alt="syntactic-sugar Logo">
+	  <h1>Syntactic Sugar</h1>
+	</a>
+</header>
+
+      
+
+    <!-- Main content -->
+	  <div id="container">
+		  
+		<main>
+
+			<article id="post-page">
+	<h2>Making your emacs config a little more literate</h2>		
+	<time datetime="2018-11-14T00:00:00+13:00" class="by-line">14 Nov 2018</time>
+	<div class="content">
+
+		<div class="drop-caps-section-type1">
+<p>
+EMACS IS an incredible application, more <i>text interface</i> than editor. Like an old baseball glove, it slowly molds to the user's hand over a period of many years. This is achieved by keeping a .emacs settings file. The user edits this file with all their customizations - snippets of Elisp code which are called by the editor on startup. I have a relatively basic .emacs file, but it still extends my editor in a myriad of useful ways. My .emacs file is like a well traveled passport, with stamps of all the destinations I've been with it. The problem is, it's also a bit of a mess.
+</p>
+
+<p>
+I've recently become interested in the concept of literate programming. The basic idea is you write a document containing your thought processes, and explaining what's going on in the code. Crucially, however, the document also contains the code in visible and compilable snippets - you can read the document, as a document, then compile and run the document as code. Those of us familiar with the wonderful Jupyter notebooks in the python world should feel right at home. Handily, I've seen many examples of people writing their .emacs files in org-mode, then using Babel to extract the relevant emacs lisp code and run it seamlessly. Lets jump in.
+</p>
+
+</div>
+
+<div class="drop-caps-section-type2">
+<p>
+Firstly, we'll begin by creating a settings.org file, and chucking it somewhere useful. I like to keep my Org files under a "~/org" directory, so I'll be using that. You do you. If you have a preexisting .emacs file, copy the code from that and place it in your new settings.org file. Add the line "#+BEGIN_SRC emacs-lisp" to the very top of the file, and "#+END_SRC" to the very end. Save the file and move your old .emacs file to somewhere new so Emacs can't see it (this is to ensure we know our changes are really working.
+</p>
+<div class="image-center">
+
+<div class="figure">
+<p><img src="../img/dotEmacs1.PNG" alt="dotEmacs1.PNG" />
+</p>
+</div>
+<div class="image-caption">
+<p>
+Adding the #+BEGIN_SRC emacs-lisp tag
+</p>
+
+</div>
+
+</div>
+
+<p>
+Next, edit the file ~/.emacs.d/init.el. If that file does not exist, create it. Just make sure the ~ home directory is the same as the one emacs sees (for example, I change my home directory to one in drop box). In your init.el file, add the following lines:
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #4f97d7; font-weight: bold;">require</span> '<span style="color: #a45bad;">org</span>)
+(org-babel-load-file
+ (expand-file-name <span style="color: #2d9574;">"Settings.org"</span>
+                   <span style="color: #2d9574;">"~/org/"</span>))
+</pre>
+</div>
+
+<p>
+Naturally, replacing "~/org/" with whatever directory you saved your settings.org file in. Save init.el, and close Emacs. Re-open emacs and everything should be working as normal. Except there's one crucial difference - your customizations were loaded from an Org file.
+</p>
+
+<p>
+Now, we're free to get literate. Just remember that any Elisp code should be bracketed by the '#+BEGIN_SRC emacs-lisp' and '#+END_SRC' statements. You can have multiple such blocks in a file, and you should, i.e:
+</p>
+<div class="image-center">
+
+<div class="figure">
+<p><img src="../img/literate1.PNG" alt="literate1.PNG" />
+</p>
+</div>
+<div class="image-caption">
+<p>
+Combining Org headers with Elisp src blocks
+</p>
+
+</div>
+
+</div>
+
+<p>
+Expanding on this idea, I can begin to format and organize my .emacs file using Org convention:
+</p>
+<div class="image-center">
+
+<div class="figure">
+<p><img src="../img/orgEmacsSettings.PNG" alt="orgEmacsSettings.PNG" />
+</p>
+</div>
+<div class="image-caption">
+<p>
+Things are starting to look a little clearer
+</p>
+
+</div>
+
+</div>
+
+<p>
+There are a few benefits to doing things this way. Firstly, the simple act of organizing things in this way helped me to identify quite a few obsolete areas of my config. Secondly, it makes changes to my settings a lot easier - if something breaks, it's easier to diagnose - simply add a property of :tangle no to a section of the settings file, and that setting will no longer be included in your emacs settings:
+</p>
+<div class="image-center">
+
+<div class="figure">
+<p><img src="../img/DisableSetting.PNG" alt="DisableSetting.PNG" />
+</p>
+</div>
+<div class="image-caption">
+<p>
+With the property of tangle no, code relating to the heading will not be included in your config.
+</p>
+
+</div>
+
+</div>
+
+<p>
+The highlighted code means all that visual rubbish will be enabled. Not that I would want to do that.
+</p>
+
+<p>
+Finally, because our settings are a Org file, it's easy to make use of Org's export functionalities:
+</p>
+<div class="image-center">
+
+<div class="figure">
+<p><img src="../img/exporttohtml.PNG" alt="exporttohtml.PNG" />
+</p>
+</div>
+<div class="image-caption">
+<p>
+Export the Org file to a nice, readable HTML document
+</p>
+
+</div>
+
+</div>
+
+<p>
+Or using Fabrice Niessen's wonderful org-html-themes:
+</p>
+<div class="image-center">
+
+<div class="figure">
+<p><img src="../img/exportToReadTheOrg.PNG" alt="exportToReadTheOrg.PNG" />
+</p>
+</div>
+<div class="image-caption">
+<p>
+Make it beautiful with Read-The-Org
+</p>
+
+</div>
+
+</div>
+
+<p>
+I've uploaded a copy of my Settings.org, exported to read-the-org <a href="http://syntactic-sugar.design/emacs-config">here</a>, so you can get an idea of how to set everything out.
+</p>
+
+</div>
+
+		
+	</div>
+</article>
+
+
+
+	  </main>
+		
+		  <!-- Pagination links -->
+      
+
+	  </div>
+	    
+	    <!-- Footer -->
+	    <footer>
+<span>@2018 - Jack Gammon</span>
+</footer>
+
+	    <!-- Script -->
+      <script src="/js/main.js"></script>	
+
+
+	</div>
+</body>
+</html>
