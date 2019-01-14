@@ -4,12 +4,22 @@
  <title>Syntactic Sugar</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <id>http://localhost:4000</id>
- <updated>2019-01-03T15:17:36+13:00</updated>
+ <updated>2019-01-14T16:16:00+13:00</updated>
  <author>
    <name>Jack Gammon</name>
    <uri>https://www.linkedin.com/in/jackgammon/</uri>
    <email>spiffyRAM@gmail.com</email>
  </author>
+
+ 
+
+ <entry>
+   <title>Editing latex documents in emacs</title>
+   <link href="http://localhost:4000/brew-latex"/>
+   <id>http://localhost:4000/brew-latex</id>
+   <updated>2019-01-14T00:00:00+13:00</updated>
+   <content type="html">&lt;div class=&quot;drop-caps-section-type1&quot;&gt; &lt;p&gt; NEW YEAR, new me. Now is a pretty good time to get your CVs and similar documents up to date. I wanted to have a play with typesetting it in Latex. Being a pretty lazy person, I quickly tired of the workflow of making a small change,...</content>
+ </entry>
 
  
 

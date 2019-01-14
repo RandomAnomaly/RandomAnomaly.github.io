@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Meta -->
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="generator" content="Jekyll">
+
+    <title>Editing latex documents in emacs</title>
+
+    <!-- CSS & fonts -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600' rel='stylesheet' type='text/css'>
+    
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+    
+    <!-- RSS -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+    
+
+   <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-129188308-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-129188308-1');
+</script>
+
+ 
+</head>
+
+
+<body>
+	<div id="wrap">
+	  	
+	  	<!-- Navigation -->
+	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/">Home</a>
+
+		<!-- Nav pages -->
+	  
+	    
+	  
+	    
+	      <a href="/about" title="About Jack">About Jack</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+    
+    <!-- Nav links -->
+	  <a href="https://www.linkedin.com/in/jackgammon/">LinkedIn</a>
+<a href="https://github.com/RandomAnomaly">Github</a>
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<!-- Your custom nav footer here -->
+	Our life is what our thoughts make it.
+</footer>
+	
+
+</nav>
+
+    
+    <!-- Icon menu -->
+	  <a id="nav-menu">
+	  	<div id="menu"></div>
+	  </a>
+
+      <!-- Header -->
+      
+        <header id="header">
+	<a href="/">
+		<img src="/img/Shrimp.svg" alt="syntactic-sugar Logo">
+	  <h1>Syntactic Sugar</h1>
+	</a>
+</header>
+
+      
+
+    <!-- Main content -->
+	  <div id="container">
+		  
+		<main>
+
+			<article id="post-page">
+	<h2>Editing latex documents in emacs</h2>		
+	<time datetime="2019-01-14T00:00:00+13:00" class="by-line">14 Jan 2019</time>
+	<div class="content">
+
+		<div class="drop-caps-section-type1">
+<p>
+NEW YEAR, new me. Now is a pretty good time to get your CVs and similar documents up to date. I wanted to have a play with typesetting it in Latex. Being a pretty lazy person, I quickly tired of the workflow of making a small change, saving the file, running latexpdf (praying I didn't break the syntax), and refreshing the resultant pdf file. I wondered whether Emacs had a pre-existing solution for me (of course it does). There are two main parts to this - 1) Get the pdflatex command on your path, and 2) Show the output from the pdflatex command in a emacs window (automatically updating when the input .tex file is updated). We'll use basictex for the pdflatex command, and latex-preview-pane for, well, the latex preview pane.
+</p>
+
+</div>
+
+<div class="drop-caps-section-type2">
+<p>
+Here I'm going to describe the process I went through to get everything set up from scratch. I'm working on a Mac, using <a href="https://brew.sh">Homebrew</a> as a package manager, but the steps are pretty much the same whatever OS you're on, once you've got the pdflatex command on your PATH. Our first step for getting things up and running is to get the pdflatex command onto your path. The full latex install takes up a fair amount of space, including a number of packages you're unlikely to ever need (at least for now), so we'll install the <a href="https://tug.org/mactex/morepackages.html">basictex</a> package. To do so using Homebrew, using the commandline enter
+</p>
+<pre class="example">
+brew install basictex
+</pre>
+<p>
+Once this completes, check everything is working by running
+</p>
+<pre class="example">
+pdflatex
+</pre>
+<p>
+If it works, you should see a bunch of information about pdflatex, and it will ask you for an input file. For now just enter x to exit.
+</p>
+
+<div class="image-center">
+
+<div class="figure">
+<p><img src="../img/pdflatex-img1.png" alt="pdflatex-img1.png" />
+</p>
+</div>
+<div class="image-caption">
+<p>
+pdflatex command is successfully added to PATH
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="drop-caps-section-type2">
+<p>
+Now that we have the pdflatex command on our system, we can go looking for an appropriate Latex template for our CV, and test the install. I decided to use the <a href="http://www.latextemplates.com/template/moderncv-cv-and-cover-letter">Modern CV</a> template. Download and extract it. If you downloaded Modern CV, take a look in the examples directory for template.tex file. Make a copy of this file and rename it to something friendly like <i>jack_resume.tex</i>, and copy it, and the file picture.jpg to the parent directory. Now we're going to test that our latex install is working. With a commandline from the moderncv folder (or the folder for whatever template you downloaded), run the pdflatex command, with the file you renamed earlier. In other words, for my example this would be
+</p>
+<pre class="example">
+pdflatex jack_resume.tex
+</pre>
+<p>
+All going well, you should see a success message, and a pdf file spit out with the same naming convention as your <i>.tex</i> file. All not going well you'll need to install some packages (remember, we did a minimal latex install). Luckily this is pretty easy. Try install any missing packages using the 
+</p>
+<pre class="example">
+tlmgr install PACKAGE_NAME
+</pre>
+<p>
+command, then try again.
+</p>
+
+<p>
+If all is well, open your version of <i>jack_resume.tex</i> in Emacs, and run latex-preview-pane mode. Emacs will render your document in another window alongside the .tex buffer. This window can be nanigated in the normal way you navigate your buffers (C-n C-p etc). Typically, I like to write the text of the document in a org-mode buffer when I am word processing. Then I open up two additional windows for the .tex file and the latex-preview-pane when it comes time to typeset. Remember to use C-x O to jump between buffers, and make liberal use of eyebrowse mode.
+</p>
+
+<div class="image-center">
+
+<div class="figure">
+<p><img src="../img/pdflatex-img2.png" alt="pdflatex-img2.png" />
+</p>
+</div>
+<div class="image-caption">
+<p>
+Use eyebrowse mode to help preserve your layout in the case of any stray C-x 0 presses
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+		
+	</div>
+</article>
+
+
+
+	  </main>
+		
+		  <!-- Pagination links -->
+      
+
+	  </div>
+	    
+	    <!-- Footer -->
+	    <footer>
+<span>@2018 - Jack Gammon</span>
+</footer>
+
+	    <!-- Script -->
+      <script src="/js/main.js"></script>	
+
+
+	</div>
+</body>
+</html>
