@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Meta -->
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="generator" content="Jekyll">
+
+    <title>SQL queries on ORG tables</title>
+
+    <!-- CSS & fonts -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600' rel='stylesheet' type='text/css'>
+    
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+    
+    <!-- RSS -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+    
+
+   <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-129188308-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-129188308-1');
+</script>
+
+ 
+</head>
+
+
+<body>
+	<div id="wrap">
+	  	
+	  	<!-- Navigation -->
+	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/">Home</a>
+
+		<!-- Nav pages -->
+	  
+	    
+	  
+	    
+	      <a href="/about" title="About Jack">About Jack</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+    
+    <!-- Nav links -->
+	  <a href="https://www.linkedin.com/in/jackgammon/">LinkedIn</a>
+<a href="https://github.com/RandomAnomaly">Github</a>
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<!-- Your custom nav footer here -->
+	Our life is what our thoughts make it.
+</footer>
+	
+
+</nav>
+
+    
+    <!-- Icon menu -->
+	  <a id="nav-menu">
+	  	<div id="menu"></div>
+	  </a>
+
+      <!-- Header -->
+      
+        <header id="header">
+	<a href="/">
+		<img src="/img/Shrimp.svg" alt="syntactic-sugar Logo">
+	  <h1>Syntactic Sugar</h1>
+	</a>
+</header>
+
+      
+
+    <!-- Main content -->
+	  <div id="container">
+		  
+		<main>
+
+			<article id="post-page">
+	<h2>SQL queries on ORG tables</h2>		
+	<time datetime="2020-03-25T00:00:00+13:00" class="by-line">25 Mar 2020</time>
+	<div class="content">
+
+		<div class="drop-caps-section-type1">
+<p>
+ORG MODE TABLES are a lot of fun to play with. To have a fully text-based table which will grow an shrink cells to fit their contents is very useful when getting organising your thoughts on screen, producing content for text only mediums, or just showing off. One more nifty trick is querying org tables using SQL commands. This method uses org-babel to load a table (or tables) into an SQLite in-memory database, perform the query, then spit out a table as a result.
+</p>
+
+</div>
+
+<div class="drop-caps-section-type2">
+<p>
+FOR PRE-REQUISITES, you're going to want to ensure you have installed SQLite, and have enabled the SQLite language in your org-babel settings. SQLite installation should be pretty straightforward. I used chocolatey to install it on my windows machine. To enable SQLite as a org babel language, run the following elisp (add it to your .emacs if you're going to keep it around).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((R . t)
+(ledger . t)
+(sqlite . t)
+))
+</pre>
+</div>
+
+<p>
+I've added ledger as another language to the list, just to demonstrate how to enable more language. If you don't want it enabled, just delete that line. Execute this and you should be all set.
+</p>
+
+</div>
+
+<div class="drop-caps-section-type2">
+<p>
+SINGLE TABLE. Let's start with a single table. Open up an org file, or switch your current buffer to org-mode. Add the following:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-org"><span style="color: #9f8766;">#+NAME: tableexample</span>
+<span style="color: #b2b2b2; background-color: #293239;">| id |  n |</span>
+<span style="color: #b2b2b2; background-color: #293239;">|----+----|</span>
+<span style="color: #b2b2b2; background-color: #293239;">|  1 |  5 |</span>
+<span style="color: #b2b2b2; background-color: #293239;">|  2 |  9 |</span>
+<span style="color: #b2b2b2; background-color: #293239;">|  3 | 10 |</span>
+<span style="color: #b2b2b2; background-color: #293239;">|  4 |  9 |</span>
+<span style="color: #b2b2b2; background-color: #293239;">|  5 | 10 |</span>
+</pre>
+</div>
+
+<p>
+We now have a table called `tableexample`. Now, add another source block:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-org"><span style="color: #9f8766;">#+header: :db ":memory:"</span>
+<span style="color: #9f8766;">#+header: :colnames no</span>
+<span style="color: #9f8766;">#+header: :var orgtable=tableexample</span>
+<span style="color: #9f8766;">#+header: :mode csv</span>
+<span style="color: #9f8766;">#+header: :header on</span>
+&#8203;#+begin_src sqlite
+.import $orgtable testtable
+select * from testtable;
+&#8203;#+end_src
+</pre>
+</div>
+
+<p>
+Executing this (C-c C-c) should spit out the following:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-org"><span style="color: #9f8766;">#+RESULTS:</span>
+<span style="color: #b2b2b2; background-color: #293239;">| id |  n |</span>
+<span style="color: #b2b2b2; background-color: #293239;">|  1 |  5 |</span>
+<span style="color: #b2b2b2; background-color: #293239;">|  2 |  9 |</span>
+<span style="color: #b2b2b2; background-color: #293239;">|  3 | 10 |</span>
+<span style="color: #b2b2b2; background-color: #293239;">|  4 |  9 |</span>
+<span style="color: #b2b2b2; background-color: #293239;">|  5 | 10 |</span>
+</pre>
+</div>
+
+<p>
+Not particularly exciting. But chaging `select * from testtable;` to `select avg(n) from testtable;` we get:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-org"><span style="color: #9f8766;">#+RESULTS:</span>
+<span style="color: #b2b2b2; background-color: #293239;">| avg(n) |</span>
+<span style="color: #b2b2b2; background-color: #293239;">|    8.6 |</span>
+</pre>
+</div>
+
+<p>
+You get the picture - arbitrary SQL code execution. The header values dictate what tables to use, and what databases to point to. You can use this method to point to an existing data base and pull out information, or even join two org tables:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-org"><span style="color: #9f8766;">#+name: students</span>
+<span style="color: #b2b2b2; background-color: #293239;">| id | fName   |</span>
+<span style="color: #b2b2b2; background-color: #293239;">|----+---------|</span>
+<span style="color: #b2b2b2; background-color: #293239;">|  1 | sarah   |</span>
+<span style="color: #b2b2b2; background-color: #293239;">|  2 | jack    |</span>
+<span style="color: #b2b2b2; background-color: #293239;">|  3 | jessica |</span>
+<span style="color: #b2b2b2; background-color: #293239;">|  4 | john    |</span>
+
+<span style="color: #9f8766;">#+name: address</span>
+<span style="color: #b2b2b2; background-color: #293239;">| studentId | address    |</span>
+<span style="color: #b2b2b2; background-color: #293239;">|-----------+------------|</span>
+<span style="color: #b2b2b2; background-color: #293239;">|         2 | north road |</span>
+<span style="color: #b2b2b2; background-color: #293239;">|         3 | south road |</span>
+
+<span style="color: #9f8766;">#+header: :db ":memory:"</span>
+<span style="color: #9f8766;">#+header: :colnames no</span>
+<span style="color: #9f8766;">#+header: :var address=address</span>
+<span style="color: #9f8766;">#+header: :var students=students</span>
+<span style="color: #9f8766;">#+header: :mode csv</span>
+<span style="color: #9f8766;">#+header: :header on</span>
+&#8203;#+begin_src sqlite
+.import $students students
+.import $address address
+select id, fName, address from students inner join address on students.id = address.studentId;
+&#8203;#+end_src
+
+<span style="color: #9f8766;">#+RESULTS:</span>
+<span style="color: #b2b2b2; background-color: #293239;">| id | fName   | address    |</span>
+<span style="color: #b2b2b2; background-color: #293239;">|  2 | jack    | north road |</span>
+<span style="color: #b2b2b2; background-color: #293239;">|  3 | jessica | south road |</span>
+</pre>
+</div>
+
+<p>
+The security confirmation can get a little irksome, to disable it, follow the steps in this stack exchange answer.
+<a href="https://emacs.stackexchange.com/questions/21124/execute-org-mode-source-blocks-without-security-confirmation">https://emacs.stackexchange.com/questions/21124/execute-org-mode-source-blocks-without-security-confirmation</a>
+</p>
+
+<p>
+To tidy it all up, I move all the header statements into the begin src line, and save it as a ya snippet:
+</p>
+<div class="org-src-container">
+<pre class="src src-snippet"><span style="color: #2aa1ae; background-color: #292e34;"># -*- mode: snippet -*-</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># name: sql-org</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># key: sql-org</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># --</span>
+&#8203;#+begin_src sqlite :db <span style="color: #2d9574;">":memory:"</span> :colnames no :var <span style="color: #4f97d7; font-weight: bold;">$</span><span style="color: #2d9574;">1</span>=<span style="color: #4f97d7; font-weight: bold;">$</span><span style="color: #2d9574;">1</span> :mode csv :header on
+.import $orgtable orgtable
+select * from <span style="color: #4f97d7; font-weight: bold;">$</span><span style="color: #2d9574;">1</span>;
+&#8203;#+end_src
+</pre>
+</div>
+
+<p>
+Now, when working with org tables, a sql query is but a sql-org [TAB] away!
+</p>
+
+</div>
+
+		
+	</div>
+</article>
+
+
+
+	  </main>
+		
+		  <!-- Pagination links -->
+      
+
+	  </div>
+	    
+	    <!-- Footer -->
+	    <footer>
+<span>@2018 - Jack Gammon</span>
+</footer>
+
+	    <!-- Script -->
+      <script src="/js/main.js"></script>	
+
+
+	</div>
+</body>
+</html>

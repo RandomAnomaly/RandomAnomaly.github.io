@@ -2,9 +2,9 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>Syntactic Sugar</title>
- <link href="http://localhost:4000/atom.xml" rel="self"/>
- <id>http://localhost:4000</id>
- <updated>2019-01-14T16:16:00+13:00</updated>
+ <link href="http://syntactic-sugar.design//atom.xml" rel="self"/>
+ <id>http://syntactic-sugar.design/</id>
+ <updated>2020-03-25T23:22:49+13:00</updated>
  <author>
    <name>Jack Gammon</name>
    <uri>https://www.linkedin.com/in/jackgammon/</uri>
@@ -14,9 +14,29 @@
  
 
  <entry>
+   <title>SQL queries on ORG tables</title>
+   <link href="http://syntactic-sugar.design//Org-tables-and-sql"/>
+   <id>http://syntactic-sugar.design//Org-tables-and-sql</id>
+   <updated>2020-03-25T00:00:00+13:00</updated>
+   <content type="html">&lt;div class=&quot;drop-caps-section-type1&quot;&gt; &lt;p&gt; ORG MODE TABLES are a lot of fun to play with. To have a fully text-based table which will grow an shrink cells to fit their contents is very useful when getting organising your thoughts on screen, producing content for text only mediums, or just showing off....</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>Ditaa digrams in org mode</title>
+   <link href="http://syntactic-sugar.design//ditaa-org-mode"/>
+   <id>http://syntactic-sugar.design//ditaa-org-mode</id>
+   <updated>2019-01-17T00:00:00+13:00</updated>
+   <content type="html">&lt;div class=&quot;drop-caps-section-type1&quot;&gt; &lt;p&gt; ORG MODE is great for writing documents, and its flexibility when it comes to exporting means writing documentation is a snap. There is a limitation, however - producing diagrams often requires the dreaded application switch. Org-babel is a literate programming parser for org files. We looked at...</content>
+ </entry>
+
+ 
+
+ <entry>
    <title>Editing latex documents in emacs</title>
-   <link href="http://localhost:4000/brew-latex"/>
-   <id>http://localhost:4000/brew-latex</id>
+   <link href="http://syntactic-sugar.design//brew-latex"/>
+   <id>http://syntactic-sugar.design//brew-latex</id>
    <updated>2019-01-14T00:00:00+13:00</updated>
    <content type="html">&lt;div class=&quot;drop-caps-section-type1&quot;&gt; &lt;p&gt; NEW YEAR, new me. Now is a pretty good time to get your CVs and similar documents up to date. I wanted to have a play with typesetting it in Latex. Being a pretty lazy person, I quickly tired of the workflow of making a small change,...</content>
  </entry>
@@ -25,8 +45,8 @@
 
  <entry>
    <title>Spellchecking in emacs</title>
-   <link href="http://localhost:4000/Emac-Spellcheck"/>
-   <id>http://localhost:4000/Emac-Spellcheck</id>
+   <link href="http://syntactic-sugar.design//Emac-Spellcheck"/>
+   <id>http://syntactic-sugar.design//Emac-Spellcheck</id>
    <updated>2018-11-16T00:00:00+13:00</updated>
    <content type="html">&lt;div class=&quot;drop-caps-section-type1&quot;&gt; &lt;p&gt; EMACS IS gorgeously extensive, but there is very little hand-holding. Short of packages like Spacemacs, it provides very little functionality out of the box. A pretty basic function of a editor is spellchecking. Fortunately, it's fairly simple matter to set it up. &lt;/p&gt; &lt;p&gt; Check Flycheck is...</content>
  </entry>
@@ -35,8 +55,8 @@
 
  <entry>
    <title>Not for you</title>
-   <link href="http://localhost:4000/Lost-Film"/>
-   <id>http://localhost:4000/Lost-Film</id>
+   <link href="http://syntactic-sugar.design//Lost-Film"/>
+   <id>http://syntactic-sugar.design//Lost-Film</id>
    <updated>2018-11-15T00:00:00+13:00</updated>
    <content type="html">&lt;div class=&quot;drop-caps-section-type1&quot;&gt; &lt;p&gt; THIS IS not for you, or so goes the dedication line for Mark Z. Danielewski's &lt;i&gt;House of Leaves&lt;/i&gt;. It's a fantastic line that creeps me out a little. It both acknowledges the reader, but also establishes a sense of hostility with them. You're here, but you really...</content>
  </entry>
@@ -45,8 +65,8 @@
 
  <entry>
    <title>Making your emacs config a little more literate</title>
-   <link href="http://localhost:4000/Literate-Programming-My-Emacs"/>
-   <id>http://localhost:4000/Literate-Programming-My-Emacs</id>
+   <link href="http://syntactic-sugar.design//Literate-Programming-My-Emacs"/>
+   <id>http://syntactic-sugar.design//Literate-Programming-My-Emacs</id>
    <updated>2018-11-14T00:00:00+13:00</updated>
    <content type="html">&lt;div class=&quot;drop-caps-section-type1&quot;&gt; &lt;p&gt; EMACS IS an incredible application, more &lt;i&gt;text interface&lt;/i&gt; than editor. Like an old baseball glove, it slowly molds to the user's hand over a period of many years. This is achieved by keeping a .emacs settings file. The user edits this file with all their customizations -...</content>
  </entry>
@@ -55,8 +75,8 @@
 
  <entry>
    <title>Building a better Building 20</title>
-   <link href="http://localhost:4000/Eudaimonia-Machine"/>
-   <id>http://localhost:4000/Eudaimonia-Machine</id>
+   <link href="http://syntactic-sugar.design//Eudaimonia-Machine"/>
+   <id>http://syntactic-sugar.design//Eudaimonia-Machine</id>
    <updated>2018-09-25T00:00:00+12:00</updated>
    <content type="html">&lt;div class=&quot;drop-caps-section-type1&quot;&gt; &lt;p&gt; I'VE ALWAYS enjoyed the idea of being able to take something as chaotic and ill-defined as creative genius, and build a machine to produce it. There's something satisfying about the mechanisms of a machine. Each part achieves its purpose because it has no choice but to be...</content>
  </entry>

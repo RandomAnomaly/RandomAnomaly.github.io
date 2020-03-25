@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Meta -->
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="generator" content="Jekyll">
+
+    <title>Ditaa digrams in org mode</title>
+
+    <!-- CSS & fonts -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600' rel='stylesheet' type='text/css'>
+    
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+    
+    <!-- RSS -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+    
+
+   <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-129188308-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-129188308-1');
+</script>
+
+ 
+</head>
+
+
+<body>
+	<div id="wrap">
+	  	
+	  	<!-- Navigation -->
+	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/">Home</a>
+
+		<!-- Nav pages -->
+	  
+	    
+	  
+	    
+	      <a href="/about" title="About Jack">About Jack</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+    
+    <!-- Nav links -->
+	  <a href="https://www.linkedin.com/in/jackgammon/">LinkedIn</a>
+<a href="https://github.com/RandomAnomaly">Github</a>
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<!-- Your custom nav footer here -->
+	Our life is what our thoughts make it.
+</footer>
+	
+
+</nav>
+
+    
+    <!-- Icon menu -->
+	  <a id="nav-menu">
+	  	<div id="menu"></div>
+	  </a>
+
+      <!-- Header -->
+      
+        <header id="header">
+	<a href="/">
+		<img src="/img/Shrimp.svg" alt="syntactic-sugar Logo">
+	  <h1>Syntactic Sugar</h1>
+	</a>
+</header>
+
+      
+
+    <!-- Main content -->
+	  <div id="container">
+		  
+		<main>
+
+			<article id="post-page">
+	<h2>Ditaa digrams in org mode</h2>		
+	<time datetime="2019-01-17T00:00:00+13:00" class="by-line">17 Jan 2019</time>
+	<div class="content">
+
+		<div class="drop-caps-section-type1">
+<p>
+ORG MODE is great for writing documents, and its flexibility when it comes to exporting means writing documentation is a snap. There is a limitation, however - producing diagrams often requires the dreaded application switch. Org-babel is a literate programming parser for org files. We looked at Org-babel's tangler in a <a href="./2018-11-14-Literate-Programming-My-Emacs.html">previous blog post</a>. There we took a file which combined a descriptive document and source code, with the intent of extracting the code and running it. Now we are going to <i>execute source code in line</i>. Org-babel proudly supports a large number of languages. Seriously, <a href="https://org-babel.readthedocs.io/en/latest/">look into it</a> Today we're going to start with something simple. <a href="http://ditaa.sourceforge.net">Ditaa</a> (DIagrams Through Ascii Art) is a command line diagram parser - it takes a Ascii representation of a diagram as an input, and spits out a image of the diagram as an output. There's some nice support for Ditaa baked in to org-babel, but some tweaking is required. Lets jump in.
+</p>
+
+</div>
+
+<div class="drop-caps-section-type2">
+<p>
+According to the Ditaa documentation, the program <i>should</i> be included with org, and the default variables in org-babel seem to agree with this, but I couldn't find it. I'm guessing it's one of those Emacs package version bits of weirdness. So our first task is to get the Ditaa <span class="underline">jar</span> file. I am specific about needing the jar file, as I tried installing Ditaa using homebrew, but that version comes with a commandline executable, which did not appear to play nice with org-babel. Download Ditaa from <a href="http://ditaa.sourceforge.net">here</a> and put the jar file somewhere safe. When using org-babel, we are essentially giving the parser permission to execute arbitrary code, and all the scary security implications which go with that. Org-babel requires you to explicitly enable a language in order to execute code in that language. Open your emacs config file, and add the following elisp code:
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((ditaa . t))
+)
+</pre>
+</div>
+<p>
+This adds ditaa to the list of allowed languages. You'll also need to let org know where your Ditaa jar file is. Add this to your config as well:
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #4f97d7; font-weight: bold;">setq</span> org-ditaa-jar-path <span style="color: #2d9574;">"/path/to/jar/ditaa.jar"</span>)
+</pre>
+</div>
+<p>
+Naturally, substituting the path with where you placed the downloaded jar file earlier.
+</p>
+
+</div>
+
+		
+	</div>
+</article>
+
+
+
+	  </main>
+		
+		  <!-- Pagination links -->
+      
+
+	  </div>
+	    
+	    <!-- Footer -->
+	    <footer>
+<span>@2018 - Jack Gammon</span>
+</footer>
+
+	    <!-- Script -->
+      <script src="/js/main.js"></script>	
+
+
+	</div>
+</body>
+</html>
