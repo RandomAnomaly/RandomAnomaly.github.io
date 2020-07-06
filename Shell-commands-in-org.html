@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Meta -->
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="generator" content="Jekyll">
+
+    <title>Shell commands in org files</title>
+
+    <!-- CSS & fonts -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600' rel='stylesheet' type='text/css'>
+    
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+    
+    <!-- RSS -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+    
+
+   <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-129188308-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-129188308-1');
+</script>
+
+ 
+</head>
+
+
+<body>
+	<div id="wrap">
+	  	
+	  	<!-- Navigation -->
+	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/">Home</a>
+
+		<!-- Nav pages -->
+	  
+	    
+	  
+	    
+	      <a href="/about" title="About Jack">About Jack</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+    
+    <!-- Nav links -->
+	  <a href="https://www.linkedin.com/in/jackgammon/">LinkedIn</a>
+<a href="https://github.com/RandomAnomaly">Github</a>
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<!-- Your custom nav footer here -->
+	Our life is what our thoughts make it.
+</footer>
+	
+
+</nav>
+
+    
+    <!-- Icon menu -->
+	  <a id="nav-menu">
+	  	<div id="menu"></div>
+	  </a>
+
+      <!-- Header -->
+      
+        <header id="header">
+	<a href="/">
+		<img src="/img/Shrimp.svg" alt="syntactic-sugar Logo">
+	  <h1>Syntactic Sugar</h1>
+	</a>
+</header>
+
+      
+
+    <!-- Main content -->
+	  <div id="container">
+		  
+		<main>
+
+			<article id="post-page">
+	<h2>Shell commands in org files</h2>		
+	<time datetime="2020-07-06T00:00:00+12:00" class="by-line">06 Jul 2020</time>
+	<div class="content">
+
+		<div class="drop-caps-section-type1">
+<p>
+I'VE BEGUN experimenting with adding shell commends into org files as org-babel blocks. This allows me to record my common actions and 1. explain what they do, 2. make them quickly repeatable from within emacs. To start with I've just added the command to run my Jekyll server locally into a file, i.e.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-org">Kill the blog by killing the buffer <span style="font-weight: bold;">*Jekyll blog*</span>
+<span style="color: #9f8766;">#+header: :dir "./jekyll/"</span>
+#+begin_src elisp :results silent
+(start-process "Jekyll blog" "<span style="font-weight: bold;">*Jekyll blog*</span>" "jekyll" "serve")
+</pre>
+</div>
+<p>
+Now, when opening my blog generate file, the blog can be run with a simple C-c C-c on the above block. I'm going to have a go at generating a "repository jumping" script with this technique - at work I have a little powershell script that provides a bunch of shortcuts to different repositories - calling "repo [repo]" will CD into that repository's directory. Could be cool to generate that file using some tangling and a templating tool.
+</p>
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Useful links</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://howardism.org/Technical/Emacs/literate-devops.html">Literate devops</a></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+		
+	</div>
+</article>
+
+
+
+	  </main>
+		
+		  <!-- Pagination links -->
+      
+
+	  </div>
+	    
+	    <!-- Footer -->
+	    <footer>
+<span>@2018 - Jack Gammon</span>
+</footer>
+
+	    <!-- Script -->
+      <script src="/js/main.js"></script>	
+
+
+	</div>
+</body>
+</html>
